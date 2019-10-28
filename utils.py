@@ -53,13 +53,18 @@ logger = create_logger()
 
 # logfunc
 def logfunc(_func=None, logger=logger):
-    """
-    A decorator that wraps the passed in function and logs
+    """A decorator that wraps the passed in function and logs
     exceptions should one occur
 
-    @param logger: The logging object
-    """
+    Returns
+    -------
+    Any
+        Output of the inner function 'func'
 
+    Raises
+    ------
+    Exception of the inner function 'func'
+    """
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
