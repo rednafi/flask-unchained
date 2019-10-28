@@ -1,7 +1,7 @@
 import functools
 import logging
 import os
-
+import sys
 
 def create_logger(log_path="logs/logs.log"):
     """Create a logger object with custom handlers. One handler
@@ -22,6 +22,7 @@ def create_logger(log_path="logs/logs.log"):
 
     # create a custom logger
     logger = logging.getLogger(__name__)
+
 
     # create handlers
     console_handler = logging.StreamHandler()
@@ -78,7 +79,6 @@ def logfunc(_func=None, *, logger=logger):
                 err = "There was an exception in  "
                 err += func.__name__
                 logger.exception(err)
-
         return wrapper
 
     # this ensures that logfunc can be used with or without args
