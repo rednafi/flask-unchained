@@ -1,8 +1,5 @@
-from pyfoster.funcs.func_logger import logfunc
-from pyfoster.funcs.func_timer import timefunc
-
-import sys
-import pyfoster
+from pyfoster.funcs.logging_func import logfunc
+from pyfoster.funcs.timing_func import timefunc
 
 
 @logfunc
