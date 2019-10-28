@@ -3,7 +3,7 @@
  <img width=960px height=540px src="img/logo.png" alt="Project logo"></a>
 </p>
 
-<h1 align="center">Python Utility Functions</h1>
+<h1 align="center">Python Utility Functions on Steroid</h1>
 
 <div align="center">
 
@@ -24,7 +24,7 @@ pip install pyfoster
 ## 💡 Usage
 Let's say you want to log the exception of a specific function. To do so:
 ```python
-from pyfoster.funcs.func_logger import logfunc
+from pyfoster.funcs.log_func import logfunc
 
 # define the function with logfunc decorator
 @logfunc
