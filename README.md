@@ -24,7 +24,7 @@ pip install pyfoster
 ## 💡 Usage
 Let's say you want to log the exception of a specific function. To do so:
 ```python
-from pyfoster.func_logger import logfunc
+from pyfoster.funcs.func_logger import logfunc
 
 # define the function with logfunc decorator
 @logfunc
