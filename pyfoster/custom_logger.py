@@ -1,10 +1,9 @@
 import functools
 import logging
-import sys
 import os
 
 
-def create_logger(log_path):
+def create_logger(log_path="logs/logs.log"):
     """Create a logger object with custom handlers. One handler
     sends data to console and another one sends data to logfile.
 
@@ -19,7 +18,7 @@ def create_logger(log_path):
 
     # create log folder if it doesn't exist
     if not os.path.exists(log_path):
-        os.mkdir("logs")
+        os.mkdir(log_path.split("/")[0])
 
     # create a custom logger
     logger = logging.getLogger(__name__)
@@ -35,7 +34,7 @@ def create_logger(log_path):
     # create formatters
     console_format = logging.Formatter("%(name)s - %(levelname)s - %(message)s")
     file_format = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        "\n%(asctime)s - %(name)s - %(levelname)s - %(message)s \n"
     )
 
     # add formatters to handlers
@@ -54,7 +53,7 @@ logger = create_logger()
 
 
 # logfunc
-def logfunc(_func=None, logger=logger):
+def logfunc(_func=None, *, logger=logger):
     """A decorator that wraps the passed in function and logs
     exceptions should one occur
 
@@ -67,19 +66,18 @@ def logfunc(_func=None, logger=logger):
     ------
     Exception of the inner function 'func'
     """
+
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             try:
-                return func(*args, **kwargs)
+                value = func(*args, **kwargs)
+                return value
             except Exception:
                 # log the exception
                 err = "There was an exception in  "
                 err += func.__name__
                 logger.exception(err)
-
-                # re-raise the exception
-                raise
 
         return wrapper
 
