@@ -28,15 +28,17 @@ def create_logger(log_path):
     console_handler = logging.StreamHandler()
     file_handler = logging.FileHandler(log_path)
 
+    # set handler level
     console_handler.setLevel(logging.WARNING)
     file_handler.setLevel(logging.ERROR)
 
-    # create formatters and add it to handlers
+    # create formatters
     console_format = logging.Formatter("%(name)s - %(levelname)s - %(message)s")
     file_format = logging.Formatter(
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     )
 
+    # add formatters to handlers
     console_handler.setFormatter(console_format)
     file_handler.setFormatter(file_format)
 
