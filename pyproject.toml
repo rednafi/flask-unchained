@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyfoster"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python Utility Functions on Steroid"
 authors = ["rednafi <redowan.nafi@gmail.com>"]
 license = "MIT"

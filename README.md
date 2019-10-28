@@ -3,7 +3,7 @@
  <img width=960px height=540px src="img/logo.png" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Python Utility Functions</h3>
+<h1 align="center">Python Utility Functions</h1>
 
 <div align="center">
 
@@ -15,6 +15,39 @@
 </div>
 
 ---
+## ⚙️ Installation
+
+Run
+```bash
+pip install pyfoster
+```
+## 💡 Usage
+Let's say you want to log the exception of a specific function. To do so:
+```python
+from pyfoster.custom_logger import logfunc
+
+# define the function with logfunc decorator
+@logfunc
+def zero_div(a, b=0):
+    return a // b
+
+# run the function
+if __name__ == "__main__":
+  print(zero_div(5))
+```
+
+This will show the exception with the function name in the console and send that to `logs/logs.log` file.
+
+```bash
+pyfoster.custom_logger - ERROR - There was an exception in  zero_div
+Traceback (most recent call last):
+  File "/home/redowan/code/pyfoster/pyfoster/custom_logger.py", line 74, in wrapper
+    value = func(*args, **kwargs)
+  File "/home/redowan/code/pyfoster/example.py", line 7, in zero_div
+    return a // b
+ZeroDivisionError: integer division or modulo by zero
+None
+```
 
 
 ## ✍️ Authors <a name = "authors"></a>
