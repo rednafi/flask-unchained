@@ -4,23 +4,34 @@ import sys
 import os
 
 
-def create_logger(log_path: str = "logs/logs.log") -> logging.Logger:
+def create_logger(log_path):
+    """Create a logger object with custom handlers. One handler
+    sends data to console and another one sends data to logfile.
 
-    # create folder
+    Parameters
+    ----------
+    log_path : str
+
+    Returns
+    -------
+    logger: logging.Logger
+    """
+
+    # create log folder if it doesn't exist
     if not os.path.exists(log_path):
         os.mkdir("logs")
 
-    # Create a custom logger
+    # create a custom logger
     logger = logging.getLogger(__name__)
 
-    # Create handlers
+    # create handlers
     console_handler = logging.StreamHandler()
     file_handler = logging.FileHandler(log_path)
 
     console_handler.setLevel(logging.WARNING)
     file_handler.setLevel(logging.ERROR)
 
-    # Create formatters and add it to handlers
+    # create formatters and add it to handlers
     console_format = logging.Formatter("%(name)s - %(levelname)s - %(message)s")
     file_format = logging.Formatter(
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -29,7 +40,7 @@ def create_logger(log_path: str = "logs/logs.log") -> logging.Logger:
     console_handler.setFormatter(console_format)
     file_handler.setFormatter(file_format)
 
-    # Add handlers to the logger
+    # add handlers to the logger
     logger.addHandler(console_handler)
     logger.addHandler(file_handler)
 
@@ -65,10 +76,8 @@ def logfunc(_func=None, logger=logger):
 
         return wrapper
 
+    # this ensures that logfunc can be used with or without args
     if _func is None:
         return decorator
     else:
         return decorator(_func)
-
-
-
