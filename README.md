@@ -8,3 +8,8 @@
 * [part-2: Templates](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates)
 
   **TIL:** Rendering static html, Jinja2 templating system, inheritance in `index.html` from `base.html` ==> completed
+
+* [part-3: Web Forms](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms)
+
+  **TIL:** Using `wtf-flask` extension for making a simple login page with
+  appropriate fields and constraints ==> completed
