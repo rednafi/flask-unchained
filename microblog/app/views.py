@@ -1,7 +1,7 @@
+from flask import flash, redirect, render_template, url_for
+
 from app import app
-from flask import render_template
 from app.forms import LoginForm
-from flask import flash, redirect, url_for
 
 
 @app.route("/")
